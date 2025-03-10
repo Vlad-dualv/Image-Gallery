@@ -7,16 +7,17 @@ import Loader from './Loader/Loader';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './ImageModal/ImageModal';
+import { Image } from './App.types';
 
 export default function App() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<Image | null>(null);
 
   useEffect(() => {
     if (!query) {
@@ -41,7 +42,7 @@ export default function App() {
     ShowImages();
   }, [page, query]);
 
-  const handleSearch = async query => {
+  const handleSearch = async (query: string) => {
     setQuery(query);
     setPage(1);
     setImages([]);
@@ -52,7 +53,7 @@ export default function App() {
     setPage(page + 1);
   };
 
-  const clickModal = image => {
+  const clickModal = (image: Image) => {
     setSelected(image);
     setIsOpen(true);
   };

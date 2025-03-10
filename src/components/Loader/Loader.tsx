@@ -9,7 +9,7 @@ export default function Loader() {
       width="50"
       ariaLabel="hourglass-loading"
       wrapperStyle={{
-        marginTop: 200,
+        marginTop: '200',
       }}
       colors={['#306cce', '#72a1ed']}
     />
